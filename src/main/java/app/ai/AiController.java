@@ -3,6 +3,7 @@ package app.ai;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import app.ai.model.dto.request.AiRequest;
@@ -24,8 +25,10 @@ public class AiController {
 
 	@PostMapping()
 	@Operation(summary = "AI 글쓰기 도우미", description = "가게 또는 메뉴 설명을 AI를 통해 생성합니다.")
-	public ApiResponse<AiResponse> generateDescription(@RequestBody @Valid AiRequest aiRequest) {
-		return ApiResponse.onSuccess(AiSuccessStatus.AI_RESPONDED, aiService.generateDescription(aiRequest));
+	public ApiResponse<AiResponse> generateDescription(
+		@RequestParam Long userId,
+		@RequestBody @Valid AiRequest aiRequest) {
+		return ApiResponse.onSuccess(AiSuccessStatus.AI_RESPONDED, aiService.generateDescription(userId, aiRequest));
 
 	}
 }

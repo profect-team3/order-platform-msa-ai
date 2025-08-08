@@ -29,13 +29,14 @@ public class AiServiceImpl implements AiService {
 	private final ChatClient chatClient;
 
 	@Override
-	public AiResponse generateDescription(AiRequest aiRequest) {
+	public AiResponse generateDescription(Long userId, AiRequest aiRequest) {
 		if (StringUtils.hasText(aiRequest.getStoreName())) {
 			if (aiRequest.getReqType() == ReqType.MENU_DESCRIPTION && !StringUtils.hasText(aiRequest.getMenuName())) {
 				throw new GeneralException(AiErrorStatus.AI_INVALID_INPUT_VALUE);
 			}
 
 			AiHistory aiRequestEntity = AiHistory.builder()
+				.userId(userId)
 				.storeName(aiRequest.getStoreName())
 				.menuName(StringUtils.hasText(aiRequest.getMenuName()) ? aiRequest.getMenuName() : "")
 				.reqType(aiRequest.getReqType())

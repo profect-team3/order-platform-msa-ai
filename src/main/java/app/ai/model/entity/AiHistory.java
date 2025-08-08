@@ -26,6 +26,9 @@ import lombok.NoArgsConstructor;
 @Builder
 public class AiHistory extends BaseEntity {
 
+	@Column(nullable = false)
+	private Long userId;
+
 	@Id
 	@GeneratedValue
 	private UUID aiRequestId;
