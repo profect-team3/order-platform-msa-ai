@@ -6,6 +6,7 @@ import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.ai.chat.prompt.Prompt;
 import org.springframework.ai.chat.prompt.PromptTemplate;
 import org.springframework.ai.openai.OpenAiChatOptions;
+import org.springframework.ai.tool.ToolCallbackProvider;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.StringUtils;
@@ -27,6 +28,7 @@ public class AiServiceImpl implements AiService {
 
 	private final AiHistoryRepository aiHistoryRepository;
 	private final ChatClient chatClient;
+	private final ToolCallbackProvider toolCallbackProvider;
 
 	@Override
 	public AiResponse generateDescription(Long userId, AiRequest aiRequest) {
@@ -78,4 +80,13 @@ public class AiServiceImpl implements AiService {
 			throw new GeneralException(AiErrorStatus.AI_INVALID_INPUT_VALUE);
 		}
 	}
+
+    public String getChatResponse(String query) {
+        PromptTemplate promptTemplate = new PromptTemplate(query);
+        Prompt prompt = new Prompt(promptTemplate.createMessage());
+
+        String aiResponse = chatClient.prompt(prompt).call().content();
+
+        return aiResponse;
+    }
 }
