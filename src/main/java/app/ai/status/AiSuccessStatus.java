@@ -11,7 +11,8 @@ import lombok.Getter;
 @Getter
 public enum AiSuccessStatus implements BaseCode {
 
-	AI_RESPONDED(HttpStatus.CREATED, "AI201", "AI 응답 생성이 성공했습니다.");
+	AI_RESPONDED(HttpStatus.CREATED, "AI201", "AI 응답 생성이 성공했습니다."),
+	MCP_CLIENT_SUCCESS(HttpStatus.OK, "MCP200", "MCP CLIENT의 응답 생성이 성공했습니다.");
 
 	private final HttpStatus httpStatus;
 	private final String code;

@@ -9,6 +9,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import app.ai.model.dto.response.ChatResponse;
+import app.ai.status.AiSuccessStatus;
+import app.global.apiPayload.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
 
 @RestController
@@ -23,11 +26,10 @@ public class McpClientController {
 			.build();
 	}
 	@GetMapping("/chat")
-	public String chat(@RequestParam String message){
+	public ApiResponse<ChatResponse> chat(@RequestParam String message){
 		PromptTemplate promptTemplate = new PromptTemplate(message);
 		Prompt prompt = promptTemplate.create();
 		ChatClient.CallResponseSpec res = chatClient.prompt(prompt).call();
-
-		return res.content();
+		return ApiResponse.onSuccess(AiSuccessStatus.MCP_CLIENT_SUCCESS, ChatResponse.builder().answer(res.content()).build());
 	}
 }
