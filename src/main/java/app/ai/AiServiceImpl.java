@@ -28,7 +28,6 @@ public class AiServiceImpl implements AiService {
 
 	private final AiHistoryRepository aiHistoryRepository;
 	private final ChatClient chatClient;
-	private final ToolCallbackProvider toolCallbackProvider;
 
 	@Override
 	public AiResponse generateDescription(Long userId, AiRequest aiRequest) {
@@ -80,12 +79,4 @@ public class AiServiceImpl implements AiService {
 			throw new GeneralException(AiErrorStatus.AI_INVALID_INPUT_VALUE);
 		}
 	}
-    public String getChatResponse(String query) {
-        PromptTemplate promptTemplate = new PromptTemplate(query);
-        Prompt prompt = new Prompt(promptTemplate.createMessage());
-
-        String aiResponse = chatClient.prompt(prompt).call().content();
-
-        return aiResponse;
-    }
 }
