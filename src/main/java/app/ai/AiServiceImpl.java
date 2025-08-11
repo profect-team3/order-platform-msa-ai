@@ -80,7 +80,6 @@ public class AiServiceImpl implements AiService {
 			throw new GeneralException(AiErrorStatus.AI_INVALID_INPUT_VALUE);
 		}
 	}
-
     public String getChatResponse(String query) {
         PromptTemplate promptTemplate = new PromptTemplate(query);
         Prompt prompt = new Prompt(promptTemplate.createMessage());
