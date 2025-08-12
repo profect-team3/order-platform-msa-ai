@@ -7,9 +7,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import app.ai.model.dto.request.AiRequest;
-import app.ai.model.dto.request.ChatRequest;
 import app.ai.model.dto.response.AiResponse;
-import app.ai.model.dto.response.ChatResponse;
 import app.ai.status.AiSuccessStatus;
 import app.global.apiPayload.ApiResponse;
 import io.swagger.v3.oas.annotations.Operation;
@@ -32,11 +30,5 @@ public class AiController {
 		@RequestBody @Valid AiRequest aiRequest) {
 		return ApiResponse.onSuccess(AiSuccessStatus.AI_RESPONDED, aiService.generateDescription(userId, aiRequest));
 
-	}
-
-	@PostMapping("/chat")
-	ChatResponse chat(@RequestBody ChatRequest chatRequest) {
-		String answer = aiService.getChatResponse(chatRequest.question());
-		return new ChatResponse(answer);
 	}
 }
