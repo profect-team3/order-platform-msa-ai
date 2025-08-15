@@ -30,9 +30,6 @@ dependencyManagement {
         mavenBom "org.springframework.cloud:spring-cloud-dependencies:2025.0.0"
     }
 }
-repositories {
-    mavenCentral()
-}
 
 ext {
     set('springAiVersion', "1.0.1")
