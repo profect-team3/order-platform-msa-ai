@@ -6,6 +6,7 @@ import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.ai.chat.prompt.Prompt;
 import org.springframework.ai.chat.prompt.PromptTemplate;
 import org.springframework.ai.openai.OpenAiChatOptions;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.StringUtils;
@@ -17,6 +18,7 @@ import app.ai.model.entity.AiHistory;
 import app.ai.model.entity.enums.AiRequestStatus;
 import app.ai.model.entity.enums.ReqType;
 import app.ai.status.AiErrorStatus;
+import app.commonSecurity.TokenPrincipalParser;
 import app.global.apiPayload.exception.GeneralException;
 import lombok.RequiredArgsConstructor;
 
@@ -27,8 +29,11 @@ public class AiService{
 
 	private final AiHistoryRepository aiHistoryRepository;
 	private final ChatClient chatClient;
+	private final TokenPrincipalParser tokenPrincipalParser;
 
-	public AiResponse generateDescription(Long userId, AiRequest aiRequest) {
+	public AiResponse generateDescription(Authentication authentication, AiRequest aiRequest) {
+		String userIdStr = tokenPrincipalParser.getUserId(authentication);
+		Long userId = Long.parseLong(userIdStr);
 		if (StringUtils.hasText(aiRequest.getStoreName())) {
 			if (aiRequest.getReqType() == ReqType.MENU_DESCRIPTION && !StringUtils.hasText(aiRequest.getMenuName())) {
 				throw new GeneralException(AiErrorStatus.AI_INVALID_INPUT_VALUE);

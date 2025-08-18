@@ -1,5 +1,6 @@
 package app.ai;
 
+import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -26,9 +27,9 @@ public class AiController {
 	@PostMapping("/describe")
 	@Operation(summary = "AI 글쓰기 도우미", description = "가게 또는 메뉴 설명을 AI를 통해 생성합니다.")
 	public ApiResponse<AiResponse> generateDescription(
-		@RequestParam Long userId,
+		Authentication authentication,
 		@RequestBody @Valid AiRequest aiRequest) {
-		return ApiResponse.onSuccess(AiSuccessStatus.AI_RESPONDED, aiService.generateDescription(userId, aiRequest));
+		return ApiResponse.onSuccess(AiSuccessStatus.AI_RESPONDED, aiService.generateDescription(authentication, aiRequest));
 
 	}
 }
