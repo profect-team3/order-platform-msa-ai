@@ -1,5 +1,6 @@
 package app.ai;
 
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -20,6 +21,7 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 @Tag(name = "AI", description = "AI 글쓰기 도우미 관련 API")
 @RequestMapping()
+@PreAuthorize("hasRole('OWNER')")
 public class AiController {
 
 	private final AiService aiService;
