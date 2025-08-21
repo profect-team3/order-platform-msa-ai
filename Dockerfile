@@ -1,10 +1,10 @@
 FROM gradle:8.8-jdk17 AS builder
 WORKDIR /workspace
 
-COPY gradlew gradlew.bat settings.gradle build.cloud.gradle ./
+COPY gradlew gradlew.bat settings.gradle ./
 COPY gradle ./gradle
-
 COPY order-platform-msa-ai ./order-platform-msa-ai
+COPY order-platform-msa-ai/build.cloud.gradle ./order-platform-msa-ai/build.gradle
 
 RUN ./gradlew :order-platform-msa-ai:build -x test
 
