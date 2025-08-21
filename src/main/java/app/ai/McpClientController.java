@@ -41,14 +41,14 @@ public class McpClientController {
     public McpClientController(ChatClient.Builder chatClientBuilder, ToolCallbackProvider tools, ChatMemoryRepository chatMemoryRepository,
         TokenPrincipalParser tokenPrincipalParser) {
 
-        // ChatMemory를 필드에 할당
         this.chatMemory = MessageWindowChatMemory.builder()
             .chatMemoryRepository(chatMemoryRepository)
             .maxMessages(10)
             .build();
 
         this.chatClient = chatClientBuilder
-            .defaultSystem("You are a helpful AI assistant that can use tools to search for stores, menus, add items to a cart, and create orders. Always show storeKey")
+            .defaultSystem("You are a helpful AI assistant that can use tools to search for "
+                + "stores, menus, add items to a cart, and create orders. Always show storeKey in bottom")
             .defaultToolCallbacks(tools)
             .defaultAdvisors(MessageChatMemoryAdvisor.builder(this.chatMemory).build())
             .build();
