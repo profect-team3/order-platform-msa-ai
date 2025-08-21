@@ -25,6 +25,7 @@ import lombok.RequiredArgsConstructor;
 @Service
 @RequiredArgsConstructor
 @Transactional
+@lombok.extern.slf4j.Slf4j
 public class AiService{
 
 	private final AiHistoryRepository aiHistoryRepository;
@@ -65,6 +66,7 @@ public class AiService{
 			);
 			String generatedContent;
 			try {
+				log.info("Request to OpenAI: {}", prompt.getContents());
 
 				generatedContent = chatClient.prompt()
 					.options(OpenAiChatOptions.builder().model("gpt-4.1-mini").build())
