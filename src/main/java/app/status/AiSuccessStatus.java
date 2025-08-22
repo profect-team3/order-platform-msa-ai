@@ -1,4 +1,4 @@
-package app.ai.status;
+package app.status;
 
 import org.springframework.http.HttpStatus;
 
@@ -9,10 +9,10 @@ import lombok.Getter;
 
 @AllArgsConstructor
 @Getter
-public enum AiErrorStatus implements BaseCode {
+public enum AiSuccessStatus implements BaseCode {
 
-	AI_GENERATION_FAILED(HttpStatus.INTERNAL_SERVER_ERROR, "AI001", "AI 콘텐츠 생성에 실패했습니다."),
-	AI_INVALID_INPUT_VALUE(HttpStatus.BAD_REQUEST, "AI002", "잘못된 입력값입니다");
+	AI_RESPONDED(HttpStatus.CREATED, "AI201", "AI 응답 생성이 성공했습니다."),
+	MCP_CLIENT_SUCCESS(HttpStatus.OK, "MCP200", "MCP CLIENT의 응답 생성이 성공했습니다.");
 
 	private final HttpStatus httpStatus;
 	private final String code;
@@ -21,6 +21,7 @@ public enum AiErrorStatus implements BaseCode {
 	@Override
 	public ReasonDTO getReason() {
 		return ReasonDTO.builder()
+			.isSuccess(true)
 			.message(message)
 			.code(code)
 			.build();
@@ -29,7 +30,7 @@ public enum AiErrorStatus implements BaseCode {
 	@Override
 	public ReasonDTO getReasonHttpStatus() {
 		return ReasonDTO.builder()
-			.isSuccess(false)
+			.isSuccess(true)
 			.message(message)
 			.code(code)
 			.httpStatus(httpStatus)

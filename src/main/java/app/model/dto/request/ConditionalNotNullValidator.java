@@ -1,6 +1,6 @@
-package app.ai.model.dto.request;
+package app.model.dto.request;
 
-import app.ai.model.entity.enums.ReqType;
+import app.model.entity.enums.ReqType;
 import jakarta.validation.ConstraintValidator;
 import jakarta.validation.ConstraintValidatorContext;
 

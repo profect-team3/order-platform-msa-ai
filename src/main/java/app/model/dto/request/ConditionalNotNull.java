@@ -1,4 +1,4 @@
-package app.ai.model.dto.request;
+package app.model.dto.request;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
