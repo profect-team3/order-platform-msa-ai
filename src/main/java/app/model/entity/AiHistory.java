@@ -1,9 +1,9 @@
-package app.ai.model.entity;
+package app.model.entity;
 
 import java.util.UUID;
 
-import app.ai.model.entity.enums.AiRequestStatus;
-import app.ai.model.entity.enums.ReqType;
+import app.model.entity.enums.AiRequestStatus;
+import app.model.entity.enums.ReqType;
 import app.global.entity.BaseEntity;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

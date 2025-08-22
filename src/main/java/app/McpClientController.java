@@ -1,4 +1,4 @@
-package app.ai;
+package app;
 
 import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.ai.chat.client.advisor.MessageChatMemoryAdvisor;
@@ -14,8 +14,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import app.commonSecurity.TokenPrincipalParser;
-import app.ai.model.dto.response.ChatResponse;
-import app.ai.status.AiSuccessStatus;
+import app.model.dto.response.ChatResponse;
+import app.status.AiSuccessStatus;
 import app.global.apiPayload.ApiResponse;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.tags.Tag;

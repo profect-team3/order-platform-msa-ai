@@ -1,4 +1,4 @@
-package app.ai.model.dto.response;
+package app.model.dto.response;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
