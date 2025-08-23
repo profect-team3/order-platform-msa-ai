@@ -25,17 +25,14 @@ configurations {
 }
 
 
-dependencyManagement {
-    imports {
-        mavenBom "org.springframework.cloud:spring-cloud-dependencies:2025.0.0"
-    }
-}
+
 
 ext {
     set('springAiVersion', "1.0.1")
 }
 
 dependencies {
+    implementation platform("org.springframework.cloud:spring-cloud-dependencies:${rootProject.ext.springCloudVersion}")
     implementation 'org.springframework.ai:spring-ai-starter-model-openai'
     implementation 'org.springframework.ai:spring-ai-starter-mcp-client'
 
@@ -64,7 +61,6 @@ dependencyManagement {
 
     imports {
         mavenBom "org.springframework.ai:spring-ai-bom:${springAiVersion}"
-        mavenBom "org.springframework.cloud:spring-cloud-dependencies:2025.0.0"
     }
 }
 
