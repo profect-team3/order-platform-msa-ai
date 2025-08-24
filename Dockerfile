@@ -6,12 +6,12 @@ COPY gradle ./gradle
 COPY order-platform-msa-ai ./order-platform-msa-ai
 COPY order-platform-msa-ai/build.cloud.gradle ./order-platform-msa-ai/build.gradle
 
-RUN ./gradlew :order-platform-msa-ai:build -x test
+RUN ./gradlew :order-platform-msa-ai:bootJar -x test
 
-FROM eclipse-temurin:17-jre-jammy
+FROM eclipse-temurin:17-jre-slim
 WORKDIR /app
 
-COPY --from=builder /workspace/order-platform-msa-ai/build/libs/*.jar /app/application.jar
+COPY --from=builder /workspace/order-platform-msa-ai/build/libs/*-boot.jar /app/application.jar
 
 EXPOSE 8089
 ENTRYPOINT ["java", "-Dspring.profiles.active=prod", "-jar", "/app/application.jar"]
