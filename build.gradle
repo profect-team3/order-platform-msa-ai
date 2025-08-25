@@ -18,34 +18,49 @@ configurations {
     }
 }
 
+ext {
+    set('springAiVersion', "1.0.1")
+}
+
 dependencyManagement {
+
     imports {
-        mavenBom "org.springframework.ai:spring-ai-bom:1.0.1"
-        mavenBom "org.springframework.cloud:spring-cloud-dependencies:2025.0.0"
+        mavenBom "org.springframework.ai:spring-ai-bom:${springAiVersion}"
     }
 }
 
 dependencies {
-    implementation 'org.springframework.ai:spring-ai-starter-model-openai'
-    implementation 'org.springframework.ai:spring-ai-starter-mcp-client'
-    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    // core
     implementation 'org.springframework.boot:spring-boot-starter-web'
-    implementation 'org.springframework.boot:spring-boot-starter-validation'
-    compileOnly 'org.projectlombok:lombok'
-    annotationProcessor 'org.projectlombok:lombok'
-    runtimeOnly 'org.postgresql:postgresql'
-    implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.6.0'
+    implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
 
-    implementation files('libs/msa-common-security-1.0.7-plain.jar')
+    // db
+    runtimeOnly 'org.postgresql:postgresql'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+
+    // security
+    implementation files('libs/msa-common-security-1.0.8-plain.jar')
     implementation "org.springframework.boot:spring-boot-starter-security"
     implementation "org.springframework.boot:spring-boot-starter-oauth2-resource-server"
 
+    // cloud
+    implementation platform("org.springframework.cloud:spring-cloud-dependencies:${rootProject.ext.springCloudVersion}")
+    implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client'
 
+    // docs
+    implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.6.0'
+
+    // lombok
+    compileOnly 'org.projectlombok:lombok'
+    annotationProcessor 'org.projectlombok:lombok'
+
+    // test
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
-    testImplementation 'org.springframework.security:spring-security-test'
 
-    implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client'
+    // ai
+    implementation 'org.springframework.ai:spring-ai-starter-model-openai'
+    implementation 'org.springframework.ai:spring-ai-starter-mcp-client'
 }
 
 tasks.named('test') {
