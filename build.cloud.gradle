@@ -42,7 +42,7 @@ dependencies {
     runtimeOnly   "org.postgresql:postgresql"
 
     // Security / OAuth2
-    implementation files("libs/msa-common-security-1.0.7-plain.jar")
+    implementation files("libs/msa-common-security-1.0.8-plain.jar")
     implementation "org.springframework.boot:spring-boot-starter-security"
     implementation "org.springframework.boot:spring-boot-starter-oauth2-resource-server"
 
@@ -56,6 +56,8 @@ dependencies {
     // Test
     testImplementation "org.springframework.boot:spring-boot-starter-test"
     testRuntimeOnly    "org.junit.platform:junit-platform-launcher"
+
+    implementation "org.springframework.boot:spring-boot-starter-actuator"
 }
 dependencyManagement {
 
