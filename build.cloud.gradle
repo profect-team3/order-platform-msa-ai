@@ -61,7 +61,6 @@ dependencyManagement {
 
     imports {
         mavenBom "org.springframework.ai:spring-ai-bom:${springAiVersion}"
-        mavenBom "org.springframework.cloud:spring-cloud-dependencies:2025.0.0"
     }
 }
 
