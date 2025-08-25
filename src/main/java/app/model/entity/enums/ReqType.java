@@ -1,4 +1,4 @@
-package app.ai.model.entity.enums;
+package app.model.entity.enums;
 
 public enum ReqType {
     STORE_DESCRIPTION,

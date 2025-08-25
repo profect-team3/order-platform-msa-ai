@@ -1,4 +1,4 @@
-package app.ai;
+package app;
 
 import java.util.Map;
 
@@ -11,13 +11,13 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.StringUtils;
 
-import app.ai.model.AiHistoryRepository;
-import app.ai.model.dto.request.AiRequest;
-import app.ai.model.dto.response.AiResponse;
-import app.ai.model.entity.AiHistory;
-import app.ai.model.entity.enums.AiRequestStatus;
-import app.ai.model.entity.enums.ReqType;
-import app.ai.status.AiErrorStatus;
+import app.model.AiHistoryRepository;
+import app.model.dto.request.AiRequest;
+import app.model.dto.response.AiResponse;
+import app.model.entity.AiHistory;
+import app.model.entity.enums.AiRequestStatus;
+import app.model.entity.enums.ReqType;
+import app.status.AiErrorStatus;
 import app.commonSecurity.TokenPrincipalParser;
 import app.global.apiPayload.exception.GeneralException;
 import lombok.RequiredArgsConstructor;
@@ -25,6 +25,7 @@ import lombok.RequiredArgsConstructor;
 @Service
 @RequiredArgsConstructor
 @Transactional
+@lombok.extern.slf4j.Slf4j
 public class AiService{
 
 	private final AiHistoryRepository aiHistoryRepository;
@@ -65,6 +66,7 @@ public class AiService{
 			);
 			String generatedContent;
 			try {
+				log.info("Request to OpenAI: {}", prompt.getContents());
 
 				generatedContent = chatClient.prompt()
 					.options(OpenAiChatOptions.builder().model("gpt-4.1-mini").build())

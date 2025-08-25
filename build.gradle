@@ -12,12 +12,6 @@ java {
         languageVersion = JavaLanguageVersion.of(17)
     }
 }
-
-ext {
-    querydslVersion = '5.0.0'
-}
-
-
 configurations {
     compileOnly {
         extendsFrom annotationProcessor
@@ -68,7 +62,6 @@ dependencies {
     implementation 'org.springframework.ai:spring-ai-starter-model-openai'
     implementation 'org.springframework.ai:spring-ai-starter-mcp-client'
 }
-
 
 tasks.named('test') {
     useJUnitPlatform()

@@ -1,0 +1,25 @@
+spring:
+  datasource:
+    url: ${DB_URL}
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
+
+  ai:
+    openai:
+      api-key: ${OPENAI_API_KEY}
+
+    mcp:
+      client:
+        sse:
+          connections:
+            webflux-mcp-server:
+              url: ${MCP_SERVER_SVC_URI}
+
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          jwk-set-uri: ${OAUTH_JWKS_URI}
+
+jwt:
+  audience:  ${AUTH_INTERNAL_AUDIENCE}
