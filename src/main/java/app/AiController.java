@@ -19,7 +19,7 @@ import lombok.RequiredArgsConstructor;
 @RestController
 @RequiredArgsConstructor
 @Tag(name = "AI", description = "AI 글쓰기 도우미 관련 API")
-@RequestMapping()
+@RequestMapping("/ai")
 @PreAuthorize("hasRole('OWNER')")
 public class AiController {
 

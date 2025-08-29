@@ -49,7 +49,7 @@ class AiControllerTest {
 
         when(aiService.generateDescription(any(), any(AiRequest.class))).thenReturn(response);
 
-        mockMvc.perform(post("/describe")
+        mockMvc.perform(post("/ai/describe")
                         .with(csrf())
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(objectMapper.writeValueAsString(request)))
@@ -63,10 +63,11 @@ class AiControllerTest {
     void generateDescription_Fail_Unauthorized() throws Exception {
         AiRequest request = new AiRequest("Test Store", "Test Menu", ReqType.MENU_DESCRIPTION, "Test Prompt");
 
-        mockMvc.perform(post("/describe")
+        mockMvc.perform(post("/ai/describe")
                         .with(csrf())
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(objectMapper.writeValueAsString(request)))
                 .andExpect(status().isUnauthorized());
     }
+
 }

@@ -29,7 +29,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 
 @RestController
 @Tag(name = "MCP-Client", description = "사용자는 텍스트로 가게조회, 장바구니 담기, 주문을 할 수 있습니다.")
-@RequestMapping()
+@RequestMapping("/ai")
 @PreAuthorize("hasRole('CUSTOMER')")
 public class McpClientController {
     private static final Logger log = LoggerFactory.getLogger(McpClientController.class);
