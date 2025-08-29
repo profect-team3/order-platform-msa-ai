@@ -1,8 +1,8 @@
-name: ECR Push - ai
+name: ECR Push - ai dev
 
 on:
   push:
-    branches: ["dev", "refactor/seperate-ci"]
+    branches: ["dev"]
 
 jobs:
   build-and-push:
