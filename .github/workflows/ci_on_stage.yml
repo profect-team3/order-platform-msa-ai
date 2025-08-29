@@ -28,5 +28,5 @@ jobs:
       - name: Build & Push ai service
         run: |
           docker build -f Dockerfile -t order-test-ecr-ai:latest .
-          # docker tag order-test-ecr-ai:latest ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.ap-northeast-2.amazonaws.com/order-test-ecr-ai:latest
-          # docker push ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.ap-northeast-2.amazonaws.com/order-test-ecr-ai:latest
+          docker tag order-test-ecr-ai:latest ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.ap-northeast-2.amazonaws.com/order-test-ecr-ai:latest
+          docker push ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.ap-northeast-2.amazonaws.com/order-test-ecr-ai:latest
