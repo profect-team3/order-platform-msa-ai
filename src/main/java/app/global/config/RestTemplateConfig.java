@@ -7,7 +7,7 @@ import org.springframework.web.client.RestTemplate;
 
 import java.time.Duration;
 
-import app.commonSecurity.TokenPrincipalParser;
+import app.commonUtil.security.TokenPrincipalParser;
 import lombok.RequiredArgsConstructor;
 
 @Configuration

@@ -11,6 +11,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.StringUtils;
 
+import app.commonUtil.apiPayload.exception.GeneralException;
+import app.commonUtil.security.TokenPrincipalParser;
 import app.model.AiHistoryRepository;
 import app.model.dto.request.AiRequest;
 import app.model.dto.response.AiResponse;
@@ -18,8 +20,6 @@ import app.model.entity.AiHistory;
 import app.model.entity.enums.AiRequestStatus;
 import app.model.entity.enums.ReqType;
 import app.status.AiErrorStatus;
-import app.commonSecurity.TokenPrincipalParser;
-import app.global.apiPayload.exception.GeneralException;
 import lombok.RequiredArgsConstructor;
 
 @Service
