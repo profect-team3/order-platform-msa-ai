@@ -2,9 +2,9 @@ package app.model.entity;
 
 import java.util.UUID;
 
+import app.commonUtil.entity.BaseEntity;
 import app.model.entity.enums.AiRequestStatus;
 import app.model.entity.enums.ReqType;
-import app.global.entity.BaseEntity;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
