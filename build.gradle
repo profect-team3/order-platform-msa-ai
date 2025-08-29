@@ -64,6 +64,7 @@ dependencies {
     implementation 'org.springframework.ai:spring-ai-starter-mcp-client'
 }
 
+
 tasks.named('test') {
     useJUnitPlatform()
 }
