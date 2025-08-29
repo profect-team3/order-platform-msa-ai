@@ -2,9 +2,9 @@ name: ECR Push ai
 
 on:
   push:
-    branches: ["stage"]
+    branches: ["stage", "dev"]
   pull_request:
-    branches: ["stage"]
+    branches: ["stage", "dev"]
 
 jobs:
   build-and-push:
