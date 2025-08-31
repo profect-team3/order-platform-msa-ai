@@ -9,6 +9,8 @@ COPY gradle ./gradle
 COPY build.cloud.gradle build.gradle
 COPY settings.gradle .
 
+RUN ./gradlew dependencies --no-daemon
+
 COPY src ./src
 COPY libs ./libs
 

@@ -7,10 +7,10 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
+import app.commonUtil.security.TokenPrincipalParser;
 import app.model.dto.request.AiRequest;
 import app.model.dto.response.AiResponse;
 import app.model.entity.enums.ReqType;
-import app.commonSecurity.TokenPrincipalParser;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

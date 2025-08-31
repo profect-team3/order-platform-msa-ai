@@ -13,9 +13,8 @@ import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
-import app.AiService;
-import app.commonSecurity.TokenPrincipalParser;
-import app.global.apiPayload.exception.GeneralException;
+import app.commonUtil.apiPayload.exception.GeneralException;
+import app.commonUtil.security.TokenPrincipalParser;
 import app.model.AiHistoryRepository;
 import app.model.dto.request.AiRequest;
 import app.model.dto.response.AiResponse;

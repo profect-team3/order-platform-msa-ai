@@ -7,9 +7,13 @@ spring:
   ai:
     openai:
       api-key: ${OPENAI_API_KEY}
-
+      chat:
+        options:
+          model: gpt-4.1-mini
     mcp:
       client:
+        enabled: true
+        request-timeout: 60s
         sse:
           connections:
             webflux-mcp-server:
