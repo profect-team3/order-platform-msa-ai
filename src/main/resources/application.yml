@@ -3,11 +3,6 @@ spring:
     name: ai
   config:
     import: optional:file:.env[.properties]
-  datasource:
-    url: ${DB_URL}
-    username: ${DB_USERNAME}
-    password: ${DB_PASSWORD}
-    driver-class-name: org.postgresql.Driver
 
   jpa:
     database-platform: org.hibernate.dialect.PostgreSQLDialect
@@ -18,30 +13,6 @@ spring:
         format_sql: true
         show_sql: true
         use_sql_comments: true
-
-  ai:
-    openai:
-      api-key: ${OPENAI_API_KEY}
-      chat:
-        options:
-          model: gpt-4.1-mini
-    mcp:
-      client:
-        enabled: true
-        request-timeout: 60s
-        sse:
-          connections:
-            webflux-mcp-server:
-              url: http://localhost:8099
-
-  security:
-    oauth2:
-      resourceserver:
-        jwt:
-          jwk-set-uri: ${OAUTH_JWKS_URI:http://localhost:8083/oauth/jwks}
-
-jwt:
-  audience:  ${AUTH_INTERNAL_AUDIENCE:internal-services}
 
 server:
   port: 8089
